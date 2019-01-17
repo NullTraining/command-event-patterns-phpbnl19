@@ -14,3 +14,7 @@ Stop it by running
 Our development server will run on `http://localhost:8000/`
 
 
+### Possible issues
+
+sudo apt-get install php7.2-xml php7.2-mbstring
+
