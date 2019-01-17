@@ -11,4 +11,6 @@ Start it by running
 Stop it by running 
 `php bin/console server:stop`
 
+Our development server will run on `http://localhost:8000/`
+
 
