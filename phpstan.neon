@@ -1,0 +1,17 @@
+parameters:
+	bootstrap: tests/bootstrap.php
+	ignoreErrors:
+	symfony:
+		container_xml_path: var/cache/test/srcApp_KernelTestDebugContainer.xml
+	excludes_analyse:
+	    - src/Kernel.php
+includes:
+	- vendor/phpstan/phpstan-phpunit/extension.neon
+	- vendor/phpstan/phpstan-phpunit/rules.neon
+	- vendor/phpstan/phpstan-webmozart-assert/extension.neon
+	- vendor/phpstan/phpstan-symfony/extension.neon
+	- vendor/phpstan/phpstan-strict-rules/rules.neon
+	- vendor/phpstan/phpstan-mockery/extension.neon
+
+
+
