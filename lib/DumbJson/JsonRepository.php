@@ -16,13 +16,20 @@ abstract class JsonRepository
         $this->setTableContent([]);
     }
 
+    abstract protected function serialize($entity): array;
+
+    abstract protected static function deserialize(array $data);
+
+    abstract protected function getEntityId($entity): string;
+
     abstract protected function getTableName(): string;
 
     protected function add($entity): void
     {
         $content = $this->getTableContent();
 
-        $content[$entity->getEntityId()] = $entity->serialize();
+        $id           = $this->getEntityId($entity);
+        $content[$id] = $this->serialize($entity);
 
         $this->setTableContent($content);
     }
@@ -60,11 +67,6 @@ abstract class JsonRepository
         $json = file_get_contents($filename);
 
         return json_decode($json, true);
-    }
-
-    private function deserialize(array $item)
-    {
-        return $item['__className']::deserialize($item);
     }
 
     private function getFileName(): string

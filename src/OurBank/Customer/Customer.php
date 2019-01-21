@@ -62,36 +62,4 @@ class Customer
     {
         return $this->phoneNumber;
     }
-
-    ///
-    /// Internal methods for dumbJson
-    ///
-
-    public function serialize(): array
-    {
-        return [
-            '__className'  => get_class($this),
-            'customerId'   => $this->customerId->getId(),
-            'firstName'    => $this->firstName,
-            'lastName'     => $this->lastName,
-            'emailAddress' => $this->emailAddress->getValue(),
-            'phoneNumber'  => $this->phoneNumber->getValue(),
-        ];
-    }
-
-    public static function deserialize(array $data): self
-    {
-        return new self(
-            new CustomerId($data['customerId']),
-            $data['firstName'],
-            $data['lastName'],
-            new EmailAddress($data['emailAddress']),
-            new PhoneNumber($data['phoneNumber'])
-        );
-    }
-
-    public function getEntityId(): string
-    {
-        return $this->customerId->getId();
-    }
 }
