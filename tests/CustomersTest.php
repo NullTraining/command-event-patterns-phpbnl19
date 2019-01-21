@@ -24,7 +24,7 @@ class CustomersTest extends TestCase
         $this->customers->truncate();
     }
 
-    public function testAddAndSaveWork(): void
+    public function testSaveAndLoadWork(): void
     {
         $customerId = new CustomerId('35ee3ee3-d00d-445a-a7df-10f6ea043538');
 
