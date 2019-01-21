@@ -4,18 +4,39 @@ declare(strict_types=1);
 
 namespace App\OurBank\Account;
 
+use App\Bank\BankId;
+
 class AccountId
 {
-    /** @var string */
-    private $id;
+    /** @var BankId */
+    private $bankId;
 
-    public function __construct(string $id)
+    /** @var AccountNumber */
+    private $accountNumber;
+
+    public function __construct(BankId $bankId, AccountNumber $accountNumber)
     {
-        $this->id = $id;
+        $this->bankId        = $bankId;
+        $this->accountNumber = $accountNumber;
+    }
+
+    public static function fromString(string $bankId, string $accountNumber): self
+    {
+        return new AccountId(new BankId($bankId), new AccountNumber($accountNumber));
+    }
+
+    public function getBankId(): BankId
+    {
+        return $this->bankId;
+    }
+
+    public function getAccountNumber(): AccountNumber
+    {
+        return $this->accountNumber;
     }
 
     public function getId(): string
     {
-        return $this->id;
+        return $this->bankId->getId().'_'.$this->accountNumber->getAccountNumber();
     }
 }

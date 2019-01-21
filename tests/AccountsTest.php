@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
+use App\Bank\BankId;
 use App\OurBank\Account\Account;
 use App\OurBank\Account\AccountId;
+use App\OurBank\Account\AccountNumber;
 use App\OurBank\Account\Accounts;
 use App\OurBank\Customer\CustomerId;
 use PHPUnit\Framework\TestCase;
@@ -22,9 +24,9 @@ class AccountsTest extends TestCase
         $this->accounts = new Accounts();
         $this->accounts->truncate();
 
-        $accountId1 = new AccountId('50f4910a-660c-43ca-91b4-de88bee555d1');
-        $accountId2 = new AccountId('b72500c9-eedb-4e16-b7b1-3f4637d7c7c6');
-        $accountId3 = new AccountId('3326e920-4f16-4f20-bc21-0e282a5b9b7b');
+        $accountId1 = AccountId::fromString('ABC', '50f4910a-660c-43ca-91b4-de88bee555d1');
+        $accountId2 = AccountId::fromString('ABC', 'b72500c9-eedb-4e16-b7b1-3f4637d7c7c6');
+        $accountId3 = AccountId::fromString('ABC', '3326e920-4f16-4f20-bc21-0e282a5b9b7b');
 
         $customerId1 = new CustomerId('35ee3ee3-d00d-445a-a7df-10f6ea043538');
         $customerId2 = new CustomerId('99d13145-00e9-4577-bfaf-bcb49b86a68d');
@@ -40,7 +42,7 @@ class AccountsTest extends TestCase
 
     public function testLoadWorks(): void
     {
-        $accountId = new AccountId('50f4910a-660c-43ca-91b4-de88bee555d1');
+        $accountId = new AccountId(new BankId('ABC'), new AccountNumber('50f4910a-660c-43ca-91b4-de88bee555d1'));
 
         $account = $this->accounts->load($accountId);
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\OurBank\Account;
 
+use App\Bank\BankId;
 use App\OurBank\Customer\CustomerId;
 
 class Account
@@ -49,17 +50,18 @@ class Account
     public function serialize(): array
     {
         return [
-            '__className' => get_class($this),
-            'accountId'   => $this->accountId->getId(),
-            'customerId'  => $this->customerId->getId(),
-            'balance'     => $this->balance,
+            '__className'   => get_class($this),
+            'bankId'        => $this->accountId->getBankId()->getId(),
+            'accountNumber' => $this->accountId->getAccountNumber()->getAccountNumber(),
+            'customerId'    => $this->customerId->getId(),
+            'balance'       => $this->balance,
         ];
     }
 
     public static function deserialize(array $data): self
     {
         return new self(
-            new AccountId($data['customerId']),
+            new AccountId(new BankId($data['bankId']), new AccountNumber($data['accountNumber'])),
             new CustomerId($data['customerId']),
             $data['balance']
         );
