@@ -27,6 +27,28 @@ class Account
         $this->balance    = $balance;
     }
 
+    public function canWithdraw(int $amount): bool
+    {
+        if ($this->balance > $amount) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function withdraw(int $amount): void
+    {
+        if (false === $this->canWithdraw($amount)) {
+            throw new \Exception('NOT ENOUGH MONEY');
+        }
+        $this->balance -= $amount;
+    }
+
+    public function deposit(int $amount): void
+    {
+        $this->balance += $amount;
+    }
+
     public function getAccountId(): AccountId
     {
         return $this->accountId;
