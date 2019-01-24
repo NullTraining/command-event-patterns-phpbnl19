@@ -10,9 +10,9 @@ use DumbJson\JsonRepository;
 
 class Accounts extends JsonRepository
 {
-    public function load(AccountId $customerId): ?Account
+    public function load(AccountId $accountId): ?Account
     {
-        return $this->find($customerId->getId());
+        return $this->find($accountId->getId());
     }
 
     public function save(Account $entity): void
