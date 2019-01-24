@@ -14,7 +14,7 @@ abstract class JsonRepository
         $this->env = getenv('APP_ENV');
     }
 
-    public function truncate()
+    public function truncate(): void
     {
         $this->setTableContent([]);
     }
