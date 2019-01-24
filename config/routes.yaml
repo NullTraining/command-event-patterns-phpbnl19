@@ -4,5 +4,13 @@ homepage:
 
 transfer:
     path: ibanking/transfer/
-    controller: App\InternetBanking\TransferMoney\TransferController::index
+    controller: App\InternetBanking\TransferMoney\TransferController::transfer
+
+outgoing_external_transfer:
+    path: ibanking/outgoing_external_transfer/
+    controller: App\InternetBanking\TransferMoney\TransferController::outgoingExternalTransfer
+
+incoming_external_transfer:
+    path: ibanking/incoming_external_transfer/
+    controller: App\InternetBanking\TransferMoney\TransferController::incomingExternalTransfer
 

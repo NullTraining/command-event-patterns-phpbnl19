@@ -8,7 +8,7 @@ class TransactionSender
 {
     public function send(string $fromAccountId, string $toAccountId, int $amount): void
     {
-        $time = time();
+        $time = microtime(true);
 
         $data = [
             'fromAccountId' => $fromAccountId,
@@ -17,7 +17,7 @@ class TransactionSender
         ];
 
         $env  = getenv('APP_ENV');
-        $path = '../../data/'.$env.'/financial-authority/'.$time.'.json';
+        $path = __DIR__.'/../../data/'.$env.'/financial-authority/'.$time.'.json';
         file_put_contents($path, json_encode($data));
     }
 }

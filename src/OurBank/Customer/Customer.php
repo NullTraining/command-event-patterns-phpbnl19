@@ -58,8 +58,18 @@ class Customer
         return $this->emailAddress;
     }
 
+    public function getEmailAddressAsString(): string
+    {
+        return $this->emailAddress->getValue();
+    }
+
     public function getPhoneNumber(): PhoneNumber
     {
         return $this->phoneNumber;
+    }
+
+    public function getPhoneNumberAsString(): string
+    {
+        return $this->phoneNumber->getValue();
     }
 }

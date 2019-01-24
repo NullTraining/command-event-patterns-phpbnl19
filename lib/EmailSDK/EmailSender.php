@@ -8,7 +8,7 @@ class EmailSender
 {
     public function send(string $from, string $to, string $subject, string $body): void
     {
-        $time = time();
+        $time = microtime(true);
 
         $data = [
             'from'    => $from,
@@ -19,7 +19,7 @@ class EmailSender
         ];
 
         $env  = getenv('APP_ENV');
-        $path = '../../data/'.$env.'/emails/'.$time.'.json';
+        $path = __DIR__.'/../../data/'.$env.'/emails/'.$time.'.json';
         file_put_contents($path, json_encode($data));
     }
 }
