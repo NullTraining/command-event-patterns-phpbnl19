@@ -76,7 +76,6 @@ class SuccessfullOutgoingTransferTest extends WebTestCase
 
         // Assert from bank account has 93 money on it.
         $this->assertBalanceOnAccount(93, '1000001');
-
     }
 
     protected function assertBalanceOnAccount(int $amount, string $accountNumber): void

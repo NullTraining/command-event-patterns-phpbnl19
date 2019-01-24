@@ -64,10 +64,10 @@ class SuccessfullIncomingTransferTest extends WebTestCase
     {
         $params = [
             'transactionId' => microtime(),
-            'customerId' => '100',
-            'from'       => '1000001',
-            'to'         => '1000002',
-            'amount'     => 7,
+            'customerId'    => '100',
+            'from'          => '1000001',
+            'to'            => '1000002',
+            'amount'        => 7,
         ];
 
         $response = $this->doGetRequest('ibanking/incoming_external_transfer/', $params);
