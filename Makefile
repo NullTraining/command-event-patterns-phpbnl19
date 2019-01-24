@@ -20,6 +20,6 @@ help: ## What you're currently reading
 now: ## run current tests
 	php php-cs-fixer.phar fix
 	./vendor/bin/phpunit
-	php -d memory_limit=-1 ./vendor/bin/phpstan --memory-limit=-1 analyse -l 7 -c phpstan.neon data src tests
+	php -d memory_limit=-1 ./vendor/bin/phpstan --memory-limit=-1 analyse -l 7 -c phpstan.neon data lib src tests
 .PHONY: now
 
