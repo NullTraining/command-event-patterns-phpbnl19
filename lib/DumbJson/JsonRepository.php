@@ -6,6 +6,9 @@ namespace DumbJson;
 
 abstract class JsonRepository
 {
+    /** @var string|false */
+    private $env;
+
     public function __construct()
     {
         $this->env = getenv('APP_ENV');
