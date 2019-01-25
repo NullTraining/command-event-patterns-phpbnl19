@@ -4,13 +4,13 @@
         "bankId": "ABC",
         "accountNumber": "1000001",
         "customerId": "100",
-        "balance": 107
+        "balance": 75
     },
     "ABC_1000002": {
         "__className": "App\\OurBank\\Account\\Account",
         "bankId": "ABC",
         "accountNumber": "1000002",
         "customerId": "100",
-        "balance": 107
+        "balance": 131
     }
 }

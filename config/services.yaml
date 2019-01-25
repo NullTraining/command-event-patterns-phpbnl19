@@ -14,7 +14,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{DependencyInjection,Entity,Handler,Migrations,Subscriber,Tests,Kernel.php}'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Subscriber,Tests,Kernel.php}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -24,3 +24,61 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\InternetBanking\Account\Handler\WithdrawMoneyHandler:
+        tags:
+            - { name: command_handler, handles: App\InternetBanking\Account\Command\WithdrawMoney }
+        public: true
+
+    App\InternetBanking\Account\Handler\DepositMoneyHandler:
+        tags:
+              - { name: command_handler, handles: App\InternetBanking\Account\Command\DepositMoney }
+        public: true
+
+
+    App\InternetBanking\Notifications\Emails\SendWithdrawalNotificationSubscriber:
+        tags:
+            - { name: event_subscriber, register_public_methods: true }
+        public: true
+
+    App\InternetBanking\Notifications\Emails\SendDepositNotificationSubscriber:
+        tags:
+            - { name: event_subscriber, register_public_methods: true }
+        public: true
+
+    App\InternetBanking\Notifications\Sms\SendDepositNotificationSubscriber:
+        tags:
+            - { name: event_subscriber, register_public_methods: true }
+        public: true
+
+    App\InternetBanking\FinancialAuthorityForCountryA\ReportHighValueDepositsSubscriber:
+        tags:
+            - { name: event_subscriber, register_public_methods: true }
+        public: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

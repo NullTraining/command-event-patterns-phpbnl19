@@ -5,7 +5,3 @@ services:
         autowire: true
         autoconfigure: true
         public: true
-
-#    App\Handler\CreateUserHandler:
-#        tags:
-#            - { name: command_handler, handles: App\Command\CreateUser }
